@@ -82,7 +82,7 @@ class Solution {
                totalsize = max(totalsize,head -> size); //  updating total size of largest BST
                return head;
            }
-           else{
+           else{ //if not a BST we return false box
               return new Box(false,1+lefthead -> size + righthead -> size,min(lefthead -> min,min(righthead -> min,root -> data)),max(lefthead -> max,max(righthead -> max,root -> data)));
            }
        }
