@@ -46,26 +46,26 @@ class Solution {
        //Only right side exist
        else if(!root -> left && root -> right){
            Box* head = Find(root -> right,totalsize);
-           if(head -> BST && head -> min > root -> data){
-               head -> size++;
-               head -> min = root -> data;
-               totalsize = max(totalsize,head -> size);
+           if(head -> BST && head -> min > root -> data){ //checking BST property that all right subtree nodes are greater than root node
+               head -> size++;//increasing size of BST
+               head -> min = root -> data;//updating min value so that parent nodes can use it
+               totalsize = max(totalsize,head -> size); //  updating total size of largest BST
                return head;
            }
-           else{
+           else{//if not a BST we return false box
                return new Box(false,head ->size+1,min(root -> data,head -> min),max(root -> data,head -> max));
            }
        }
        //Only left side exist
        else if(root -> left && !root -> right){
            Box* head = Find(root -> left,totalsize);
-           if(head -> BST && head -> max < root -> data){
-               head -> size++;
-               head -> max = root -> data;
-               totalsize = max(totalsize,head -> size);
+           if(head -> BST && head -> max < root -> data){ //checking BST property that all left subtree nodes are smaller than root node
+               head -> size++;//increasing size of BST
+               head -> max = root -> data; //updating max value so that parent nodes can use it
+               totalsize = max(totalsize,head -> size); //  updating total size of largest BST
                return head;
            }
-           else{
+           else{//if not a BST we return false box
                return new Box(false,head ->size+1,min(root -> data,head -> min),max(root -> data,head -> max));
            }
        }
@@ -76,10 +76,10 @@ class Solution {
            
            if(lefthead -> BST && righthead -> BST && lefthead -> max < root -> data && righthead -> min > root -> data){
                Box *head = new Box(root -> data);
-               head -> size += lefthead -> size + righthead -> size;
-               head -> min = lefthead -> min;
-               head -> max = righthead -> max;
-               totalsize = max(totalsize,head -> size);
+               head -> size += lefthead -> size + righthead -> size; // we dont add 1 because we already initialized size as 1 in constructor
+               head -> min = lefthead -> min;//updating min value so that parent nodes can use it
+               head -> max = righthead -> max;//updating max value so that parent nodes can use it
+               totalsize = max(totalsize,head -> size); //  updating total size of largest BST
                return head;
            }
            else{
