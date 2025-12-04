@@ -26,9 +26,10 @@ int getbalance(Node* root){
 
 // For LL unbalanced
 Node* rightrotation(Node* root){
+    //Right Rotation on root
     Node* child = root -> left;
     Node* childright = child -> right;
-
+    //Managaing edge case by making childright as root's left
     child -> right = root;
     root -> left = childright;
     //updating height and child after rotation  
@@ -40,9 +41,10 @@ Node* rightrotation(Node* root){
 
 // For RR unbalanced
 Node* leftrotation(Node* root){
+    //Left Rotation on root
     Node* child = root -> right;
     Node* childleft = child -> left;
-
+    //Managaing edge case by making childleft as root's right
     child -> left = root;
     root -> right = childleft;
     //updating height and child after rotation
