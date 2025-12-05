@@ -7,5 +7,11 @@
 
 // Convert a given decimal number to its binary representation by dividing the number by 2 repeatedly and storing the remainders.
 
-//According to Moorey Transistor capacity is getting doubled every 2 years. 
-//So to store large data we need to use binary numbers 
+//According to Moorey Transistor capacity is getting doubled every 2 years.So to store large data we need to use binary numbers 
+
+//Execution Time -> Machine Lang > Assembly Lang > High Level Lang
+
+//Time complexity -> Time complexity is a way to represent the amount of time taken by an algorithm to run as a function of the length of the input.
+
+//Flowchart -> Systematic representation of the flow of algorithms
+
