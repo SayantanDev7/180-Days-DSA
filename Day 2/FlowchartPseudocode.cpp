@@ -34,4 +34,18 @@ Pseudocode:
     EndIf
     End
     */
-   
+
+
+    /*
+
+    Pseduocode for cube of number:
+    Start
+    Input N
+    CUBE = N * N * N
+    Print CUBE
+    End
+    */
+
+    /*
+    
+    */
