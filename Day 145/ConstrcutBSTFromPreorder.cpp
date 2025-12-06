@@ -26,3 +26,19 @@ public:
         return BST(preorder,index,INT_MIN,INT_MAX);
     }
 };
+void inorder(TreeNode* root){
+    if(root == NULL)
+        return;
+    inorder(root -> left);
+    cout<<root -> val<<" ";
+    inorder(root -> right);
+}
+int main(){
+    int ind = 0;
+    vector<int> preorder = {8,5,1,7,10,12};
+    Solution obj;
+    TreeNode* root = obj.bstFromPreorder(preorder);
+    cout<<"Inorder Traversal of Constructed BST: ";
+    inorder(root);
+    return 0;
+}
