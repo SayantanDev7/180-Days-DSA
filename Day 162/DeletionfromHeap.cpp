@@ -45,17 +45,22 @@ void insert(int val){
 
 void Heapify(int index){
     int largest = index;
-    int left= 2*index + 1;
-    int right = 2*index + 2;
+    int left= 2*index + 1; //getting index of left child
+    int right = 2*index + 2; //getting index of right child
 
-    if(left<size && arr[left]>arr[largest]){
+    if(left<size && arr[left]>arr[largest]){ //checking if left child is larger than root
         largest = left;
     }
-    if(right<size && arr[right]>arr[largest]){
+    if(right<size && arr[right]>arr[largest]){//checking if right child is larger than largest so far
         largest = right;
     }
     if(largest != index){
         swap(arr[largest], arr[index]);
+        /*
+    because after the swap the pushed-down value might still be smaller than its own children — so we must continue pushing 
+    it down until it lands in a place where both children are ≤ it. 
+    If it’s already in correct place, the recursive call will find largest == index and return immediately.
+    */
         Heapify(largest);
     }
 }
@@ -69,16 +74,17 @@ void deleteRoot(){
 
     cout << "Deleted root element from the Max Heap." << endl;
 
-    if(size == 0){
+    if(size == 0){ //if after deletion heap becomes empty
         return;
     }
-    Heapify(0);
+    Heapify(0); //Heapify from the root node
 }
 };
 int main(){
     MaxHeap h(5);
     h.insert(10);
     h.insert(20);
+    h.deleteRoot();
     h.insert(5);
     h.insert(30);
     h.insert(25);
