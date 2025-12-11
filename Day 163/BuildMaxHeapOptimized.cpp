@@ -1,5 +1,7 @@
 // previously i built max heap by inserting elements one by one i.e step up method which tc is O(nlogn)
 // now i will build max heap by heapify method which is step down method which tc is O(n)
+//SC of this code is O(1) as we are not using any extra space though the recursive calls will use stack space but that 
+//is not considered in SC here because we are modifying the given array itself
 #include<iostream>
 using namespace std;
 
