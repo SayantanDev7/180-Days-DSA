@@ -11,6 +11,9 @@ int main(){
     pq.pop();
 
     cout << "Size of priority queue: " << pq.size() << endl; //3
+
+    //Printing elements of max heap
+    cout << "Elements of max heap: ";
     while(!pq.empty()){
         cout << pq.top() << " ";
         pq.pop();
@@ -25,6 +28,8 @@ int main(){
     cout << "\nTop element of min heap: " << minHeap.top() << endl; //5
     minHeap.pop();
 
+    //Printing elements of min heap
+    cout << "Elements of min heap: ";
     while(!minHeap.empty()){
         cout << minHeap.top() << " ";
         minHeap.pop();
