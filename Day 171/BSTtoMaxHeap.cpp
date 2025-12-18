@@ -16,6 +16,8 @@ class Solution {
         inorder(root -> right,ans);
     }
     
+    //ans vector contains sorted elements from inorder traversal
+    //index is sent as reference to keep track of position in ans vector
     void postorder(Node* root,vector<int> &ans,int &ind){
         if(!root)
             return;
