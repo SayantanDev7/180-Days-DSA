@@ -32,7 +32,9 @@ class Solution {
         return CBT(root -> left,2*ind+1,totalnodes) && CBT(root -> right,2*ind+2,totalnodes);
     }
     
+    //Function to check if the binary tree is a max-heap
     bool MaxHeap(Node* root){
+        //checking for max-heap property for left and right child
         if(root -> left){
             if(root -> data < root -> left -> data)
                 return 0;
