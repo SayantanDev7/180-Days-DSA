@@ -27,11 +27,12 @@ public:
 
         while(!p.empty()){
             int curr = p.top();
+            //if curr - prev > 0 means we can perform operation to make curr 0
             if(curr - prev > 0){
                 opn += 1;
                 prev = curr;
             }
-
+            //removeing all occurrences of curr from heap and checking for duplicate elements
             while(!p.empty() && p.top() == curr)
                 p.pop();
         }
