@@ -8,9 +8,10 @@ struct Node {
 class Solution {
   public:
   
-    // Returns:
-    //  - negative value if target found (distance upward as negative)
-    //  - positive height if not found
+    /*
+    Negative return values mean “target found below”
+    Positive return values mean “normal subtree height”
+    */
     int Burn(Node* root, int target, int &timer) {
 
         if (!root) return 0;
@@ -19,18 +20,18 @@ class Solution {
         if (root->data == target)
             return -1;   // negative indicates upward distance
 
-        int left = Burn(root->left, target, timer);
-        int right = Burn(root->right, target, timer);
+        int left = Burn(root->left, target, timer); //explore left subtree and if -ve value is returned, it means target is found in left subtree
+        int right = Burn(root->right, target, timer); //explore right subtree and if -ve value is returned, it means target is found in right subtree
 
         // If target found in left subtree
         if (left < 0) {
-            timer = max(timer, (-left) + right);
+            timer = max(timer, (-left) + right); //-left = distance from left child to target
             return left - 1;    // go one level upward
         }
 
         // If target found in right subtree
         if (right < 0) {
-            timer = max(timer, (-right) + left);
+            timer = max(timer, (-right) + left); //-right = distance from right child to target
             return right - 1;
         }
 
@@ -38,16 +39,16 @@ class Solution {
         return 1 + max(left, right);
     }
 
+    
     // Find the target node pointer inside the tree
-    void find(Node* root, int target, Node* &BurnNode) {
+    void find(Node* root, int target, Node* &BurnNode) { // This block  finds the starting point of fire
         if (!root) return;
-
         if (root->data == target) {
-            BurnNode = root;
+            BurnNode = root; //BurnNode is passed by reference, so the caller gets the result
             return;
         }
-        find(root->left, target, BurnNode);
-        find(root->right, target, BurnNode);
+        find(root->left, target, BurnNode); //If target is in the left subtree, this call will find it..and DFS continues
+        find(root->right, target, BurnNode); //If target is in the right subtree, this call will find it..and DFS continues
     }
 
     // Normal height of a subtree
@@ -63,12 +64,12 @@ class Solution {
         // Corrected parameter order
         Burn(root, target, timer);
 
-        // Find target node pointer
-        Node* BurnNode = NULL;
-        find(root, target, BurnNode);
+        // Burnnode stores the address of the target node
+        Node* BurnNode = NULL; 
+        find(root, target, BurnNode); // Finding the target node in the tree
 
-        // Height of subtree under target
-        int height = Height(BurnNode) - 1;
+        // Height of subtree under target node
+        int height = Height(BurnNode) - 1; //-1 here to not count the target node itself
 
         return max(timer, height);
     }
