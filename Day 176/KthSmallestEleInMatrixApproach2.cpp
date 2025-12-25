@@ -13,22 +13,22 @@ using namespace std;
 
 int kthSmallest(vector<vector<int>> &mat, int k) {
     int n = mat.size();
-    int left = mat[0][0];
-    int right = mat[n-1][n-1];
-    
+    int left = mat[0][0]; // minimum element
+    int right = mat[n-1][n-1]; // maximum element
+    // Binary Search
     while(left <= right){
-        int count = 0;
-    int mid = left + (right - left)/2;
+        int count = 0; // to count elements less than mid
+    int mid = left + (right - left)/2; // to avoid overflow
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
-            if(mat[i][j] < mid)
-                count++;
+            if(mat[i][j] < mid) // count elements less than mid
+                count++; //
         }
     }
-        if(count <= k){
+        if(count <= k){ // if count is less than or equal to k, search in the right half
             left = mid + 1;
         }
-        else  {
+        else  { // else search in the left half
             right = mid - 1;
         }
     }
